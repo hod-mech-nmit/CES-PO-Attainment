@@ -75,8 +75,15 @@ nav.tabs a:focus-visible{outline:2px solid var(--mustard);outline-offset:-2px}
 .scheme .seg{border-color:color-mix(in srgb,var(--band-ink) 30%,transparent)}
 .scheme .seg button{background:transparent;color:var(--band-ink-2)}
 .scheme .seg button[aria-pressed="true"]{background:var(--mustard);color:var(--accent-on)}
-.navbtn{background:none;border:1px solid color-mix(in srgb,var(--band-ink) 35%,transparent);color:var(--band-ink);border-radius:4px;padding:3px 10px;font-family:var(--f-display);font-weight:600;font-size:12.5px;cursor:pointer}
+.acct{padding:10px 16px 12px;border-bottom:1px solid var(--line-soft);display:flex;flex-direction:column;gap:8px}
+.acct-who{font-size:13px;color:var(--ink-2)}
+.acct-who b{color:var(--nitte)}
+.acct-btns{display:flex;flex-wrap:wrap;gap:6px}
+.navbtn{background:none;border:1px solid color-mix(in srgb,var(--band-ink) 35%,transparent);color:var(--band-ink);border-radius:4px;padding:3px 10px;font-family:var(--f-display);font-weight:600;font-size:12.5px;cursor:pointer;white-space:nowrap}
 .navbtn:hover{background:color-mix(in srgb,var(--band-ink) 12%,transparent)}
+.howto{background:var(--sunk);border-radius:6px;padding:12px 16px;font-size:13.5px}
+.howto ol{margin:6px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.howto a{color:var(--nitte);font-weight:600}
 .sync{font-size:12px;color:var(--band-ink-2);display:inline-flex;align-items:center;gap:6px}
 .sync i{width:7px;height:7px;border-radius:50%;background:var(--band-ink-2);display:inline-block}
 .sync.saved i{background:#6cc08e}.sync.saving i{background:#e3a94a}.sync.ro i{background:#f2948c}.sync.err i{background:#f2948c}
@@ -212,6 +219,53 @@ textarea{width:100%;min-height:118px;font-family:var(--f-mono);font-size:12.5px;
 .lvopts .checks label{align-items:flex-start}
 .lvopts .checks input{margin-top:3px;flex:none}
 .lvex{margin:4px 0 0;font-size:13px;color:var(--ink-2);background:var(--sunk);border-radius:4px;padding:8px 10px}
+/* two-column layout: data entry on the left, reports on the right */
+.wrap{max-width:1480px}
+main .wrap.layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:1000px){main .wrap.layout{grid-template-columns:minmax(0,1fr)}.side{position:static!important}}
+.side{position:sticky;top:calc(12px + env(safe-area-inset-top,0px));max-height:calc(100vh - 24px);overflow-y:auto;min-width:0}
+.reports{display:flex;flex-direction:column;gap:18px;min-width:0}
+.sidecard{border-top:4px solid var(--nitte)}
+.side-head{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;justify-content:space-between;padding:14px 16px 10px;border-bottom:1px solid var(--line-soft)}
+.side-head h2{color:var(--nitte)}
+.steps{list-style:none;margin:0;padding:6px 0}
+.step{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:12px 16px;border-left:3px solid transparent}
+.step+.step{border-top:1px solid var(--line-soft)}
+.step.pending{border-left-color:var(--mustard);background:color-mix(in srgb,var(--mustard) 9%,transparent)}
+.step .num{width:26px;height:26px;border-radius:50%;background:var(--nitte);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.step h3{font-size:14.5px;margin:2px 0 6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.step .st{margin:0 0 8px;font-size:13px;color:var(--ink-2)}
+.step-actions{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.step .linkbtn{padding:2px 0;font-size:12.5px}
+.need{background:var(--mustard);color:var(--accent-on);font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px}
+.step .seg button{padding:5px 14px}
+.step .seg button[aria-pressed="true"]{background:var(--nitte);color:#fff}
+.acct{padding:10px 16px 12px;border-bottom:1px solid var(--line-soft);display:flex;flex-direction:column;gap:8px}
+.acct-who{font-size:13px;color:var(--ink-2)}
+.acct-who b{color:var(--nitte)}
+.acct-btns{display:flex;flex-wrap:wrap;gap:6px}
+.navbtn{background:none;border:1px solid color-mix(in srgb,var(--band-ink) 35%,transparent);color:var(--band-ink);border-radius:4px;padding:3px 10px;font-family:var(--f-display);font-weight:600;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.navbtn:hover{background:color-mix(in srgb,var(--band-ink) 12%,transparent)}
+.howto{background:var(--sunk);border-radius:6px;padding:12px 16px;font-size:13.5px}
+.howto ol{margin:6px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.howto a{color:var(--nitte);font-weight:600}
+.sync{color:var(--ink-2)}
+.sync i{background:var(--ink-3)}
+.step .lvtable{min-width:0;width:100%;font-size:12.5px;margin-bottom:8px}
+.step .lvtable th,.step .lvtable td{padding:5px 6px}
+.step .lvtable tbody th{white-space:nowrap}
+.step .lvtable thead th{background:var(--nitte);color:#fff;font-weight:700}
+.step .pctin input{width:62px;padding:3px 4px}
+.lvopts{gap:4px}
+.lvopts label{font-size:13px}
+.step .lvex{font-size:12px;padding:6px 8px}
+nav.tabs{background:transparent;border:0;border-bottom:2px solid var(--line-soft)}
+nav.tabs .tablist{gap:2px}
+nav.tabs a{color:var(--ink-2);padding:10px 16px 9px;font-size:16px;margin-bottom:-2px}
+nav.tabs a:hover{color:var(--nitte)}
+nav.tabs a[aria-current="page"]{color:var(--nitte);border-bottom-color:var(--mustard)}
+nav.tabs a:focus-visible{outline-color:var(--nitte)}
+.toolbar{top:env(safe-area-inset-top,0px)}
 .banner{background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);border-radius:6px;padding:10px 14px;font-size:13px}
 </style>
 
@@ -225,37 +279,117 @@ textarea{width:100%;min-height:118px;font-family:var(--f-mono);font-size:12.5px;
       <h1>Course Exit Survey — PO &amp; PSO Attainment</h1>
       <div class="eyebrow" id="eyebrow">BE Mechanical Engineering · 2021 Scheme · Indirect assessment</div>
     </div>
-    <div class="actions">
-      <button class="btn btn-primary edit-only" id="btnImport" type="button">Upload CO attainment</button>
-      <button class="btn btn-ghost" id="btnPrint" type="button">Print (PDF)</button>
-      <button class="btn btn-ghost" id="btnExport" type="button">Export .xlsx</button>
-      <button class="btn btn-ghost edit-only" id="btnTemplate" type="button">CO template</button>
-    </div>
   </div>
 </header>
-<nav class="tabs" aria-label="Pages">
-  <div class="wrap">
-    <div class="tablist">
-      <a href="#matrix" data-view="matrix"><span class="up" aria-hidden="true">↑</span>Articulation Matrix<span class="need" id="needMx" hidden></span></a>
-      <a href="#attainment" data-view="attainment"><span class="up" aria-hidden="true">↑</span>PO Attainment<span class="need" id="needAt" hidden></span></a>
-      <a href="#summary" data-view="summary">Summary</a>
-    </div>
-    <div class="scheme">
-      <span>Scheme</span>
-      <div class="seg" role="group" aria-label="Scheme" id="schemeSeg"></div>
-      <span class="sync" id="sync"><i></i><span>Saved in this browser</span></span>
-      <button class="navbtn" id="btnBackup" type="button">Backup</button>
-      <label class="navbtn" for="restoreFile" id="restoreLbl">Restore</label><input type="file" id="restoreFile" accept=".json" hidden>
-    </div>
-  </div>
-</nav>
 
 <main>
-  <div class="wrap">
+  <div class="wrap layout">
 
+    <aside class="side" aria-label="Data entry">
+      <section class="panel sidecard">
+        <div class="side-head">
+          <h2>Data entry</h2>
+          <span class="sync" id="sync"><i></i><span>Loading latest data…</span></span>
+        </div>
+        <div class="acct">
+          <span class="acct-who" id="acctWho">Viewing only</span>
+          <div class="acct-btns">
+            <button class="btn btn-primary btn-sm" id="btnSign" type="button">Sign in to edit</button>
+            <button class="btn btn-plain btn-sm" id="btnBackup" type="button">Backup</button>
+            <label class="btn btn-plain btn-sm edit-only" for="restoreFile" id="restoreLbl">Restore</label><input type="file" id="restoreFile" accept=".json" hidden>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step" id="stepScheme">
+            <span class="num">1</span>
+            <div class="step-body">
+              <h3>Scheme</h3>
+              <div class="seg" role="group" aria-label="Scheme" id="schemeSeg"></div>
+            </div>
+          </li>
+          <li class="step" id="stepMx">
+            <span class="num">2</span>
+            <div class="step-body">
+              <h3>Articulation matrix <span class="need" id="needMx" hidden>Upload needed</span></h3>
+              <p class="st" id="stMx"></p>
+              <div class="step-actions edit-only">
+                <button class="btn btn-primary btn-sm" id="btnMxUpload" type="button">Upload matrix</button>
+                <button class="btn btn-plain btn-sm" id="btnAdd" type="button">Add course</button>
+              </div>
+              <button class="linkbtn edit-only" id="btnMxTemplate" type="button">Download matrix template</button>
+            </div>
+          </li>
+          <li class="step" id="stepCo">
+            <span class="num">3</span>
+            <div class="step-body">
+              <h3>CO attainment % <span class="need" id="needAt" hidden>Upload needed</span></h3>
+              <p class="st" id="stCo"></p>
+              <div class="step-actions edit-only">
+                <button class="btn btn-primary btn-sm" id="btnImport" type="button">Upload CO attainment</button>
+              </div>
+              <button class="linkbtn edit-only" id="btnTemplate" type="button">Download CO template</button>
+            </div>
+          </li>
+          <li class="step" id="stepLv">
+            <span class="num">4</span>
+            <div class="step-body">
+              <h3>Attainment levels</h3>
+              <table class="lvtable">
+                <thead><tr><th>Level</th><th>Condition</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr class="l1"><th scope="row">Level 1</th><td>Below (&lt;)</td><td><span class="pctin"><input type="number" id="lvT1" min="0" max="100" step="0.01" inputmode="decimal" aria-label="Level 2 starts at %">%</span></td></tr>
+                  <tr class="l2"><th scope="row">Level 2</th><td>In between</td><td id="lvMid"></td></tr>
+                  <tr class="l3"><th scope="row">Level 3</th><td>At or above (≥)</td><td><span class="pctin"><input type="number" id="lvT2" min="0" max="100" step="0.01" inputmode="decimal" aria-label="Level 3 starts at %">%</span></td></tr>
+                </tbody>
+              </table>
+              <div class="checks lvopts" role="radiogroup" aria-label="How levels are shown">
+                <label title="0% = 1.00, Level 2 value = 2.00, Level 3 value and above = 3.00"><input type="radio" name="lvMethod" id="lvBand" value="band"> Decimal within the bands</label>
+                <label title="1, 2 or 3 exactly as in the table"><input type="radio" name="lvMethod" id="lvWhole" value="whole"> Whole level (1, 2, 3)</label>
+                <label title="Attainment % ÷ 100 × 3; thresholds not used"><input type="radio" name="lvMethod" id="lvProp" value="prop"> Proportional (% ÷ 100 × 3)</label>
+              </div>
+              <p class="lvex" id="lvEx"></p>
+              <p class="form-err" id="lvErr" hidden></p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </aside>
+
+    <div class="reports">
+      <nav class="tabs" aria-label="Reports">
+        <div class="tablist">
+          <a href="#matrix" data-view="matrix">Articulation Matrix</a>
+          <a href="#attainment" data-view="attainment">PO Attainment</a>
+          <a href="#summary" data-view="summary">Summary</a>
+        </div>
+      </nav>
+
+    <div id="roBanner" hidden style="display:none"></div>
     <div class="banner" id="restoreBox" hidden style="display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center"><span></span>
       <button class="btn btn-primary btn-sm" id="restoreYes" type="button">Restore</button><button class="btn btn-plain btn-sm" id="restoreNo" type="button">Cancel</button></div>
-    <div class="banner" id="roBanner" hidden>You can view this data but not change it. Ask the page owner for edit access to enter CO attainment or change matrices.</div>
+
+    <section class="panel" id="signPanel" hidden>
+      <div class="panel-head">
+        <h2>Sign in to edit</h2>
+        <button class="linkbtn" id="closeSign" type="button">Close</button>
+      </div>
+      <form class="form" id="signForm" novalidate style="flex-direction:column;align-items:stretch;max-width:760px">
+        <p class="note">Viewing, exporting and printing need no sign-in. To enter or change data, paste a GitHub token from an account with write access to the <b id="repoName"></b> repository. The token is kept only in this browser, and Sign out removes it. Each save is recorded in the repository history under your GitHub name.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end">
+          <div class="field" style="flex:1 1 320px"><label for="ghToken">GitHub token</label><input type="password" id="ghToken" autocomplete="off" spellcheck="false" placeholder="ghp_…"></div>
+          <button class="btn btn-primary" id="signBtn" type="submit">Sign in</button>
+        </div>
+        <p class="form-err" id="signErr" hidden></p>
+        <div class="howto">
+          <h3>How to get a token (once per person)</h3>
+          <ol>
+            <li>The repository owner (<b id="ownerName"></b>) adds your GitHub account under the repository's <b>Settings → Collaborators → Add people</b>. Accept the invitation that arrives by email.</li>
+            <li>Signed in to GitHub, open <a id="tokenLink" target="_blank" rel="noopener">GitHub's new-token page</a>. The <b>public_repo</b> box is already ticked. Pick an expiry (for example 90 days) and click <b>Generate token</b>.</li>
+            <li>Copy the token (it starts with <span class="code">ghp_</span>) and paste it above.</li>
+          </ol>
+        </div>
+      </form>
+    </section>
 
     <section class="panel" id="importPanel" hidden>
       <div class="panel-head">
@@ -286,6 +420,54 @@ textarea{width:100%;min-height:118px;font-family:var(--f-mono);font-size:12.5px;
         </div>
       </div>
       <div class="result" id="importResult" hidden></div>
+    </section>
+
+    <section class="panel" id="mxPanel" hidden>
+      <div class="panel-head">
+        <h2>Upload articulation matrix · <span id="mxScheme">2021</span> scheme</h2>
+        <button class="linkbtn" id="closeMx" type="button">Close</button>
+      </div>
+      <div class="import">
+        <div>
+          <div class="drop" id="mxDrop">
+            <strong>Drop the CO-PO mapping workbook (.xlsx)</strong>
+            <span class="meta">or</span>
+            <label class="btn btn-plain" for="mxFile">Choose file</label>
+            <input type="file" id="mxFile" accept=".xlsx,.xls,.csv" hidden>
+          </div>
+          <p class="note" style="margin-top:10px">Same layout as the 2021 CO-PO-PSO mapping workbook: a title row such as <span class="code">21ME32 | Thermal Science and Engineering</span>, then a header row with CO, PO1 … PO12, PSO1, PSO2 and one row per CO. Semester is read from the sheet name (Sem 3), a "Semester 3" title, or the course code.</p>
+        </div>
+        <div class="form" style="padding:0;flex-direction:column;align-items:stretch">
+          <div class="field">
+            <span class="lbl">When a course code already exists</span>
+            <div class="radios">
+              <label><input type="radio" name="mxMode" id="mxMerge" value="merge" checked> Add new and update existing courses</label>
+              <label><input type="radio" name="mxMode" id="mxReplace" value="replace"> Replace every course in this scheme</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="mxSem">Semester for courses where none can be found</label>
+            <select id="mxSem"></select>
+          </div>
+          <p class="note">The flat layout also works: one row per CO with columns Course Code, Course Name, Sem, CO, PO1 … PSO2.</p>
+        </div>
+      </div>
+      <div class="result" id="mxResult" hidden></div>
+    </section>
+
+    <section class="panel" id="addPanel" hidden>
+      <div class="panel-head">
+        <h2>Add course · <span id="addScheme">2021</span> scheme</h2>
+        <button class="linkbtn" id="closeAdd" type="button">Close</button>
+      </div>
+      <form class="form" id="addForm" novalidate>
+        <div class="field" style="flex:0 1 140px"><label for="aCode">Course code</label><input type="text" id="aCode" placeholder="21ME32" autocomplete="off"></div>
+        <div class="field" style="flex:1 1 280px"><label for="aName">Course name</label><input type="text" id="aName" placeholder="Thermal Science and Engineering" autocomplete="off"></div>
+        <div class="field"><label for="aSem">Semester</label><select id="aSem"></select></div>
+        <div class="field" style="flex:0 1 90px"><label for="aCos">No. of COs</label><input type="number" id="aCos" min="1" max="10" value="5"></div>
+        <button class="btn btn-primary" type="submit">Add and fill matrix</button>
+        <p class="form-err" id="addErr" hidden></p>
+      </form>
     </section>
 
     <section class="panel" id="printPanel" hidden>
@@ -323,13 +505,15 @@ textarea{width:100%;min-height:118px;font-family:var(--f-mono);font-size:12.5px;
           <button type="button" id="mLevel" aria-pressed="true">Level (3)</button>
           <button type="button" id="mPct" aria-pressed="false">Percent</button>
         </div>
-        <span class="spacer"></span>
         <button class="linkbtn edit-only" id="incAll" type="button">Include shown</button>
         <button class="linkbtn edit-only" id="excAll" type="button">Exclude shown</button>
+        <span class="spacer"></span>
+        <button class="btn btn-plain btn-sm" id="btnPrint" type="button">Print (PDF)</button>
+        <button class="btn btn-plain btn-sm" id="btnExport" type="button">Export .xlsx</button>
       </div>
     </section>
 
-    <div id="view-summary" class="sheets">
+    <div id="view-summary" class="sheets" hidden>
       <section class="panel">
         <div class="panel-head">
           <h2>Program attainment from course exit survey</h2>
@@ -337,32 +521,6 @@ textarea{width:100%;min-height:118px;font-family:var(--f-mono);font-size:12.5px;
         </div>
         <div class="scroll"><table class="prog" id="progTable"></table></div>
         <div style="padding:10px 16px 14px" class="formula" id="formula"></div>
-      </section>
-      <section class="panel" id="levelsPanel">
-        <div class="panel-head">
-          <h2>Attainment levels · <span id="lvScheme">2021</span> scheme</h2>
-          <span class="meta">Used for every level on this page, the export and the print</span>
-        </div>
-        <div class="levels">
-          <div class="scroll"><table class="lvtable">
-            <thead><tr><th colspan="3" class="lvtitle">Attainment levels</th></tr><tr><th>Level</th><th>Condition</th><th>Value</th></tr></thead>
-            <tbody>
-              <tr class="l1"><th scope="row">Level 1</th><td>Below (&lt;)</td><td><span class="pctin"><input type="number" id="lvT1" min="0" max="100" step="0.01" inputmode="decimal" aria-label="Level 2 starts at %">%</span></td></tr>
-              <tr class="l2"><th scope="row">Level 2</th><td>In between</td><td id="lvMid"></td></tr>
-              <tr class="l3"><th scope="row">Level 3</th><td>At or above (≥)</td><td><span class="pctin"><input type="number" id="lvT2" min="0" max="100" step="0.01" inputmode="decimal" aria-label="Level 3 starts at %">%</span></td></tr>
-            </tbody>
-          </table></div>
-          <div class="lvopts">
-            <span class="lbl">How levels are shown</span>
-            <div class="checks">
-              <label><input type="radio" name="lvMethod" id="lvBand" value="band"> <span><b>Decimal level within the bands</b><br><span class="meta">0% = 1.00, Level 2 value = 2.00, Level 3 value and above = 3.00. The whole number is the level in the table.</span></span></label>
-              <label><input type="radio" name="lvMethod" id="lvWhole" value="whole"> <span><b>Whole level only</b><br><span class="meta">1, 2 or 3 exactly as in the table.</span></span></label>
-              <label><input type="radio" name="lvMethod" id="lvProp" value="prop"> <span><b>Proportional</b><br><span class="meta">Attainment % ÷ 100 × 3; the thresholds are not used.</span></span></label>
-            </div>
-            <p class="lvex" id="lvEx"></p>
-            <p class="form-err" id="lvErr" hidden></p>
-          </div>
-        </div>
       </section>
       <section class="panel">
         <div class="panel-head">
@@ -376,73 +534,20 @@ textarea{width:100%;min-height:118px;font-family:var(--f-mono);font-size:12.5px;
     <div id="view-matrix" class="sheets" hidden>
       <div class="view-intro">
         <h2>CO-PO Articulation Matrix</h2>
-        <div class="actions edit-only">
-          <button class="btn btn-plain" id="btnMxUpload" type="button">Upload articulation matrix</button>
-          <button class="btn btn-plain" id="btnAdd" type="button">Add course</button>
-        </div>
         <span class="meta">Correlation 3 = High, 2 = Medium, 1 = Low · blank = no correlation</span>
       </div>
-
-      <section class="panel" id="mxPanel" hidden>
-        <div class="panel-head">
-          <h2>Upload articulation matrix · <span id="mxScheme">2021</span> scheme</h2>
-          <button class="linkbtn" id="closeMx" type="button">Close</button>
-        </div>
-        <div class="import">
-          <div>
-            <div class="drop" id="mxDrop">
-              <strong>Drop the CO-PO mapping workbook (.xlsx)</strong>
-              <span class="meta">or</span>
-              <label class="btn btn-plain" for="mxFile">Choose file</label>
-              <input type="file" id="mxFile" accept=".xlsx,.xls,.csv" hidden>
-            </div>
-            <p class="note" style="margin-top:10px">Same layout as the 2021 CO-PO-PSO mapping workbook: a title row such as <span class="code">21ME32 | Thermal Science and Engineering</span>, then a header row with CO, PO1 … PO12, PSO1, PSO2 and one row per CO. Semester is read from the sheet name (Sem 3), a "Semester 3" title, or the course code.</p>
-          </div>
-          <div class="form" style="padding:0;flex-direction:column;align-items:stretch">
-            <div class="field">
-              <span class="lbl">When a course code already exists</span>
-              <div class="radios">
-                <label><input type="radio" name="mxMode" id="mxMerge" value="merge" checked> Add new and update existing courses</label>
-                <label><input type="radio" name="mxMode" id="mxReplace" value="replace"> Replace every course in this scheme</label>
-              </div>
-            </div>
-            <div class="field">
-              <label for="mxSem">Semester for courses where none can be found</label>
-              <select id="mxSem"></select>
-            </div>
-            <p class="note">The flat layout also works: one row per CO with columns Course Code, Course Name, Sem, CO, PO1 … PSO2.</p>
-          </div>
-        </div>
-        <div class="result" id="mxResult" hidden></div>
-      </section>
-
-      <section class="panel" id="addPanel" hidden>
-        <div class="panel-head">
-          <h2>Add course · <span id="addScheme">2021</span> scheme</h2>
-          <button class="linkbtn" id="closeAdd" type="button">Close</button>
-        </div>
-        <form class="form" id="addForm" novalidate>
-          <div class="field" style="flex:0 1 140px"><label for="aCode">Course code</label><input type="text" id="aCode" placeholder="21ME32" autocomplete="off"></div>
-          <div class="field" style="flex:1 1 280px"><label for="aName">Course name</label><input type="text" id="aName" placeholder="Thermal Science and Engineering" autocomplete="off"></div>
-          <div class="field"><label for="aSem">Semester</label><select id="aSem"></select></div>
-          <div class="field" style="flex:0 1 90px"><label for="aCos">No. of COs</label><input type="number" id="aCos" min="1" max="10" value="5"></div>
-          <button class="btn btn-primary" type="submit">Add and fill matrix</button>
-          <p class="form-err" id="addErr" hidden></p>
-        </form>
-      </section>
-
       <div class="sheets" id="matrixList"></div>
     </div>
 
     <div id="view-attainment" class="sheets" hidden>
       <div class="view-intro">
         <h2>CO-PO Attainment</h2>
-        <div class="actions edit-only"><button class="btn btn-primary" type="button" data-act="goCo">Upload CO attainment</button></div>
         <span class="meta">Enter each CO's attainment % in the first column · untick a course to leave it out of the final attainment and the print</span>
       </div>
       <div class="sheets" id="attainList"></div>
     </div>
 
+    </div>
   </div>
 </main>
 <div class="toast" id="toast" role="status" hidden></div>
@@ -534,58 +639,190 @@ function programCalc(list) {
 }
 const enabled = () => courses().filter(c => !cur().off[c.code]);
 
-// ---------- shared saving (artifact database; falls back to this browser)
-let db = null, readOnly = false;
-const writing = {}, dirty = {}, timers = {};
+// ---------- shared saving: one data file in this GitHub repository (branch "ces-data")
+const GH = (() => {
+  const m = location.hostname.match(/^([^.]+)\.github\.io$/i);
+  const seg = location.pathname.split("/").filter(Boolean)[0];
+  return { owner: m ? m[1] : "hod-mech-nmit", repo: m && seg ? seg : "CES-PO-Attainment", branch: "ces-data", file: "ces-data.json" };
+})();
+const AUTH_KEY = "ces-gh-auth";
+let auth = null;
+try { auth = JSON.parse(localStorage.getItem(AUTH_KEY) || "null"); } catch (e) {}
+let readOnly = !auth;
+const sync = { sha: null, etag: null, base: null, timer: null, pushing: false, again: false, retry: null, deferRender: false, pollDelay: 60000 };
+
+const ghFetch = (path, opt = {}) => fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}${path ? "/" + path : ""}`, {
+  ...opt, cache: "no-store",
+  headers: { Accept: "application/vnd.github+json", ...(auth ? { Authorization: `Bearer ${auth.token}` } : {}), ...(opt.headers || {}) }
+});
+function b64decode(s) { const bin = atob(String(s).replace(/\s/g, "")); return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))); }
+function b64encode(str) { const bytes = new TextEncoder().encode(str); let bin = ""; for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000)); return btoa(bin); }
+const snapshot = () => JSON.stringify(Object.fromEntries(SCHEMES.map(s => [s, DATA[s]])));
+
 function setSync(state) {
   const el = document.getElementById("sync");
-  el.className = "sync " + state;
-  el.querySelector("span").textContent = { local: "Saved in this browser · use Backup to keep a copy", saving: "Saving…", saved: "Saved for everyone with access", ro: "View only", err: "Not saved for others" }[state];
+  el.className = "sync " + ({ saved: "saved", saving: "saving", view: "", loading: "saving" }[state] ?? "err");
+  el.querySelector("span").textContent = {
+    loading: "Loading latest data…", view: "Showing the latest shared data", saving: "Saving for everyone…", saved: "Saved for everyone",
+    err: "Not saved yet · retrying", denied: "Your sign-in can't save here", offline: "Can't reach GitHub · showing the copy in this browser",
+    limit: "GitHub is busy · showing the copy in this browser"
+  }[state];
 }
-function commit(scheme = UI.scheme) {
-  saveLocal();
-  if (!db || readOnly) return;
-  setSync("saving");
-  clearTimeout(timers[scheme]);
-  timers[scheme] = setTimeout(() => flush(scheme), 700);
+function safeRender() {
+  const a = document.activeElement;
+  if (a && a.matches && a.matches("main input, main select, main textarea")) { sync.deferRender = true; return; }
+  rerender();
 }
-async function flush(s, retried) {
-  timers[s] = null;
-  if (writing[s]) { dirty[s] = true; return; }
-  writing[s] = true;
-  try { await db.doc("schemes/" + s).set(clone(DATA[s])); setSync("saved"); }
-  catch (err) {
-    const code = err && err.code;
-    if (code === "unavailable" && !retried) { writing[s] = false; setTimeout(() => flush(s, true), 800 + Math.random() * 800); return; }
-    if (code === "invalid_argument" || code === "not_granted") { readOnly = true; setSync("ro"); renderAll(); }
-    else { setSync("err"); toast(code === "quota_exceeded" ? "The page's storage is full, so this change is kept in this browser only" : "Couldn't save the change for others; it is kept in this browser"); }
-  }
-  writing[s] = false;
-  if (dirty[s]) { dirty[s] = false; flush(s); }
+document.addEventListener("focusout", () => setTimeout(() => {
+  if (!sync.deferRender) return;
+  const a = document.activeElement;
+  if (a && a.matches && a.matches("main input, main select, main textarea")) return;
+  sync.deferRender = false; rerender();
+}, 0));
+
+async function fetchRemote(conditional) {
+  const res = await ghFetch(`contents/${GH.file}?ref=${GH.branch}`, { headers: conditional && sync.etag ? { "If-None-Match": sync.etag } : {} });
+  if (res.status === 304) return { unchanged: true };
+  if (res.status === 404) return { missing: true };
+  if (!res.ok) { const e = new Error("GitHub " + res.status); e.status = res.status; throw e; }
+  const j = await res.json();
+  const body = JSON.parse(b64decode(j.content));
+  const schemes = {};
+  SCHEMES.forEach(s => schemes[s] = normalizeScheme((body.schemes && body.schemes[s]) || blank()));
+  return { sha: j.sha, etag: res.headers.get("ETag"), schemes };
 }
-(async () => {
-  db = null;
-  if (!db) { setSync("local"); return; }
+async function pull() {
+  if (sync.timer || sync.pushing) return;
   try {
-    const user = await window.claude.use("user");
-    if (user && (await user.can("data.write")) === false) readOnly = true;
-  } catch (e) {}
-  setSync(readOnly ? "ro" : "saved");
-  if (readOnly) renderAll();
-  SCHEMES.forEach(s => {
-    db.doc("schemes/" + s).onSnapshot(snap => {
-      if (snap.metadata.hasPendingWrites || writing[s] || timers[s] || dirty[s]) return;
-      if (!snap.exists) {
-        if (!readOnly && DATA[s].courses.length) { setSync("saving"); flush(s); }
-        return;
-      }
-      const d = normalizeScheme(snap.data());
-      if (JSON.stringify(d) === JSON.stringify(DATA[s])) return;
-      DATA[s] = clone(d); saveLocal();
-      if (s === UI.scheme) rerender();
-    }, () => setSync("local"));
+    const r = await fetchRemote(true);
+    sync.pollDelay = auth ? 20000 : 60000;
+    if (sync.timer || sync.pushing) return;
+    if (r.missing) { sync.sha = null; if (sync.base == null) sync.base = snapshot(); }
+    else if (!r.unchanged) {
+      sync.sha = r.sha; sync.etag = r.etag;
+      const next = JSON.stringify(r.schemes);
+      sync.base = next;
+      if (next !== snapshot()) { SCHEMES.forEach(s => DATA[s] = r.schemes[s]); saveLocal(); safeRender(); }
+    }
+    setSync(readOnly ? "view" : "saved");
+  } catch (e) {
+    const busy = e.status === 403 || e.status === 429;
+    sync.pollDelay = busy ? 300000 : 60000;
+    setSync(busy ? "limit" : "offline");
+  }
+}
+function pollLoop() { setTimeout(async () => { if (!document.hidden) await pull(); pollLoop(); }, sync.pollDelay); }
+window.addEventListener("focus", () => pull());
+
+// three-way merge so two editors saving at once keep each other's work
+function mergeMap(b = {}, t = {}, m = {}) {
+  const out = {};
+  new Set([...Object.keys(b), ...Object.keys(t), ...Object.keys(m)]).forEach(k => {
+    const v = JSON.stringify(m[k]) !== JSON.stringify(b[k]) ? m[k] : t[k];
+    if (v !== undefined) out[k] = v;
   });
-})();
+  return out;
+}
+function mergeScheme(b, t, m) {
+  b = b || blank(); t = t || blank(); m = m || blank();
+  const byCode = l => Object.fromEntries((l || []).map(c => [c.code, c]));
+  const cm = mergeMap(byCode(b.courses), byCode(t.courses), byCode(m.courses));
+  const order = [...t.courses, ...m.courses].map(c => c.code).filter((c, i, a) => a.indexOf(c) === i && cm[c]);
+  const out = { courses: sortCourses(order.map(c => cm[c])), co: mergeMap(b.co, t.co, m.co), off: mergeMap(b.off, t.off, m.off) };
+  const lv = JSON.stringify(m.levels) !== JSON.stringify(b.levels) ? m.levels : t.levels;
+  if (lv) out.levels = lv;
+  return out;
+}
+
+function commit() {
+  saveLocal();
+  if (readOnly || !auth) return;
+  setSync("saving");
+  clearTimeout(sync.timer);
+  sync.timer = setTimeout(() => { sync.timer = null; push(); }, 2500);
+}
+async function ensureBranch() {
+  const r = await ghFetch(`git/ref/heads/${GH.branch}`);
+  if (r.ok) return;
+  const repo = await (await ghFetch("")).json();
+  const main = await (await ghFetch(`git/ref/heads/${repo.default_branch || "main"}`)).json();
+  const c = await ghFetch("git/refs", { method: "POST", body: JSON.stringify({ ref: `refs/heads/${GH.branch}`, sha: main.object.sha }) });
+  if (!c.ok && c.status !== 422) { const e = new Error("branch " + c.status); e.status = c.status; throw e; }
+}
+async function push(attempt = 0) {
+  if (!auth) return;
+  if (sync.pushing) { sync.again = true; return; }
+  sync.pushing = true;
+  clearTimeout(sync.retry); sync.retry = null;
+  try {
+    if (!sync.sha) await ensureBranch();
+    const mine = snapshot();
+    const body = {
+      message: `Update PO attainment data (${UI.scheme} scheme) via course exit survey page`, branch: GH.branch,
+      content: b64encode(JSON.stringify({ app: "nmit-po-attainment", version: 2, updated: new Date().toISOString(), by: auth.login, schemes: JSON.parse(mine) }, null, 1))
+    };
+    if (sync.sha) body.sha = sync.sha;
+    const res = await ghFetch(`contents/${GH.file}`, { method: "PUT", body: JSON.stringify(body) });
+    if (res.ok) {
+      const j = await res.json();
+      sync.sha = j.content.sha; sync.etag = null; sync.base = mine;
+      setSync(sync.timer ? "saving" : "saved");
+    } else if ((res.status === 409 || res.status === 422) && attempt < 4) {
+      // someone else saved first: merge their version with ours, then save again
+      const r = await fetchRemote(false);
+      const base = sync.base ? JSON.parse(sync.base) : null;
+      if (!r.missing) {
+        SCHEMES.forEach(s => DATA[s] = mergeScheme(base && base[s], r.schemes[s], DATA[s]));
+        sync.sha = r.sha; sync.etag = r.etag; sync.base = JSON.stringify(r.schemes);
+        saveLocal(); safeRender();
+      } else sync.sha = null;
+      sync.pushing = false;
+      return push(attempt + 1);
+    } else if (res.status === 401 || res.status === 403 || res.status === 404) {
+      setSync("denied");
+      toast(res.status === 401 ? "Your GitHub token has expired or is wrong. Sign in again." : "This GitHub account can't save to the repository. Ask the owner to add you as a collaborator.");
+    } else { setSync("err"); sync.retry = setTimeout(() => push(), 15000); }
+  } catch (e) { setSync("err"); sync.retry = setTimeout(() => push(), 15000); }
+  sync.pushing = false;
+  if (sync.again) { sync.again = false; push(); }
+}
+
+// ---------- sign in / out
+async function signIn(token) {
+  const err = document.getElementById("signErr"); err.hidden = true;
+  const btn = document.getElementById("signBtn"); btn.disabled = true; btn.textContent = "Checking…";
+  try {
+    const h = { headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}` }, cache: "no-store" };
+    const rr = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}`, h);
+    if (rr.status === 401) throw new Error("That token wasn't accepted by GitHub. Check that you copied all of it and that it hasn't expired.");
+    const repo = await rr.json();
+    if (!repo.permissions || !repo.permissions.push) throw new Error(`This GitHub account can't write to ${GH.owner}/${GH.repo}. Ask the owner to add it under Settings → Collaborators, accept the invitation, then try again.`);
+    const user = await (await fetch("https://api.github.com/user", h)).json();
+    auth = { token, login: user.login || "editor" };
+    try { localStorage.setItem(AUTH_KEY, JSON.stringify(auth)); } catch (e) {}
+    readOnly = false;
+    document.getElementById("ghToken").value = "";
+    document.getElementById("signPanel").hidden = true;
+    renderAll(); renderSign();
+    toast(`Signed in as ${auth.login}. Your changes now save for everyone.`);
+    sync.etag = null; pull();
+  } catch (e) {
+    err.textContent = e.message && !/fetch/i.test(e.message) ? e.message : "Couldn't reach GitHub. Check the internet connection and try again."; err.hidden = false;
+  }
+  btn.disabled = false; btn.textContent = "Sign in";
+}
+function signOut() {
+  auth = null; readOnly = true;
+  try { localStorage.removeItem(AUTH_KEY); } catch (e) {}
+  UI.editing = null; UI.confirmDel = null;
+  renderAll(); renderSign(); setSync("view"); toast("Signed out");
+}
+function renderSign() {
+  const b = document.getElementById("btnSign");
+  b.textContent = auth ? "Sign out" : "Sign in to edit";
+  b.className = auth ? "btn btn-plain btn-sm" : "btn btn-primary btn-sm";
+  document.getElementById("acctWho").innerHTML = auth ? `Signed in as <b>${esc(auth.login)}</b> · changes save for everyone` : "Viewing only · sign in to enter data";
+}
 
 // ---------- rendering
 function rerender() {
@@ -714,15 +951,16 @@ function renderAttain() {
 
 const VIEWS = ["summary", "matrix", "attainment"];
 function renderNeeds() {
-  const mx = document.getElementById("needMx"), at = document.getElementById("needAt");
-  const noMx = !courses().length;
-  const missing = enabled().filter(c => courseCalc(c).status !== "ok").length;
-  mx.hidden = !noMx; mx.textContent = "Upload needed";
-  at.hidden = noMx || !missing; at.textContent = `${missing} to upload`;
-  mx.parentElement.classList.toggle("pending", noMx);
-  at.parentElement.classList.toggle("pending", !noMx && missing > 0);
-  mx.parentElement.title = noMx ? `Upload the articulation matrix for the ${UI.scheme} scheme` : "Articulation matrix uploaded";
-  at.parentElement.title = noMx ? "Upload the articulation matrix first" : missing ? `${missing} enabled course${missing === 1 ? " is" : "s are"} missing CO attainment %` : "CO attainment entered for every enabled course";
+  const n = courses().length, inc = enabled();
+  const missing = inc.filter(c => courseCalc(c).status !== "ok").length;
+  const done = inc.length - missing;
+  document.getElementById("stMx").textContent = n ? `${n} course${n === 1 ? "" : "s"} in the ${UI.scheme} scheme` : `Not uploaded yet for the ${UI.scheme} scheme`;
+  document.getElementById("stCo").textContent = !n ? "Upload the articulation matrix first" :
+    missing ? `${done} of ${inc.length} enabled courses complete · ${missing} still to upload` : `All ${inc.length} enabled courses complete`;
+  document.getElementById("needMx").hidden = !!n;
+  document.getElementById("needAt").hidden = !n || !missing;
+  document.getElementById("stepMx").classList.toggle("pending", !n);
+  document.getElementById("stepCo").classList.toggle("pending", !!n && missing > 0);
 }
 function renderLevels() {
   const { method, t1, t2 } = levelCfg();
@@ -734,7 +972,6 @@ function renderLevels() {
   ["lvBand", "lvWhole", "lvProp"].forEach(id => { const r = document.getElementById(id); r.checked = r.value === method; r.disabled = readOnly; });
   const ex = [Math.round((t1 * 0.8) * 100) / 100, Math.round(((t1 + t2) / 2) * 100) / 100, Math.min(100, t2 + 5)];
   document.getElementById("lvEx").textContent = "Examples: " + ex.map(p => `${fmt2(p)}% → ${fmtL(lvl(p))}`).join(" · ");
-  document.getElementById("lvScheme").textContent = UI.scheme;
 }
 function setLevels(patch) {
   const next = { ...levelCfg(), ...patch };
@@ -749,8 +986,8 @@ document.getElementById("lvT1").addEventListener("change", e => { if (!readOnly)
 document.getElementById("lvT2").addEventListener("change", e => { if (!readOnly) setLevels({ t2: parseFloat(e.target.value) }); });
 document.querySelectorAll('input[name="lvMethod"]').forEach(r => r.addEventListener("change", () => { if (!readOnly && r.checked) setLevels({ method: r.value }); }));
 function renderView() {
-  renderNeeds();
-  if (UI.view === "summary") { renderProgram(); renderLevels(); renderLedger(); }
+  renderNeeds(); renderLevels();
+  if (UI.view === "summary") { renderProgram(); renderLedger(); }
   else if (UI.view === "matrix") renderMatrix();
   else renderAttain();
 }
@@ -848,9 +1085,10 @@ mainEl.addEventListener("input", e => {
 mainEl.addEventListener("click", e => {
   const b = e.target.closest("[data-act]"); if (!b) return;
   const act = b.dataset.act, code = b.dataset.code, c = code ? findCourse(code) : null;
+  if (act === "goSign") { openPanel("signPanel"); document.getElementById("ghToken").focus(); return; }
   if (act === "goCo") { openPanel("importPanel"); return; }
-  if (act === "goUpload") { location.hash = "matrix"; setTimeout(() => openPanel("mxPanel"), 0); return; }
-  if (act === "goAdd") { location.hash = "matrix"; setTimeout(() => { openPanel("addPanel"); document.getElementById("aCode").focus(); }, 0); return; }
+  if (act === "goUpload") { openPanel("mxPanel"); return; }
+  if (act === "goAdd") { openPanel("addPanel"); document.getElementById("aCode").focus(); return; }
   if (readOnly) return;
   if (act === "edit") { UI.editing = code; UI.confirmDel = null; renderMatrix(); document.getElementById(`mx-${code}-0-0`)?.focus(); }
   else if (act === "done") { UI.editing = null; renderMatrix(); document.getElementById("mx-" + code)?.scrollIntoView({ block: "nearest" }); }
@@ -876,9 +1114,9 @@ document.getElementById("ledger").addEventListener("click", e => {
   setTimeout(() => document.getElementById("at-" + code)?.scrollIntoView({ block: "start" }), 0);
 });
 
-const TOP_PANELS = ["importPanel", "printPanel"], MX_PANELS = ["mxPanel", "addPanel"];
+const TOP_PANELS = ["importPanel", "printPanel", "mxPanel", "addPanel", "signPanel"];
 function openPanel(id) {
-  (TOP_PANELS.includes(id) ? TOP_PANELS : MX_PANELS).forEach(p => document.getElementById(p).hidden = p !== id);
+  TOP_PANELS.forEach(p => { const el = document.getElementById(p); if (el) el.hidden = p !== id; });
   document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
 }
 document.getElementById("btnImport").onclick = () => openPanel("importPanel");
@@ -1189,6 +1427,16 @@ async function saveFile(data, filename) {
 const saveWb = (wb, filename) => saveFile(new Blob([XLSX.write(wb, { type: "array", bookType: "xlsx" })]), filename);
 const r2 = v => v == null ? "" : Math.round(v * 100) / 100;
 
+document.getElementById("btnMxTemplate").onclick = () => {
+  const head = ["Course Code", "Course Name", "Sem", "CO", ...POS];
+  const ex = [[2,1,0,0,0,0,0,0,0,0,0,0,2,0],[3,2,0,0,0,0,0,0,0,0,0,0,2,0],[3,2,1,2,0,0,0,0,0,0,0,0,2,1]];
+  const rows = [head, ...ex.map((r, i) => ["EXAMPLE", "Example course (rows with code EXAMPLE are ignored)", 3, "CO" + (i + 1), ...r.map(v => v || "")])];
+  const ws = XLSX.utils.aoa_to_sheet(rows); ws["!cols"] = [{ wch: 13 }, { wch: 46 }, { wch: 5 }, { wch: 6 }, ...POS.map(() => ({ wch: 6 }))];
+  const g = XLSX.utils.aoa_to_sheet([["How to fill"], ["One row per CO. Repeat the course code and name on every CO row."], ["Sem: 1 to 8 (blank = taken from the course code)."], ["CO: CO1, CO2, …"], ["PO1 to PSO2: 3 = High, 2 = Medium, 1 = Low, blank = no correlation."], ["Rows with code EXAMPLE are ignored on upload."]]);
+  g["!cols"] = [{ wch: 90 }];
+  const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Articulation Matrix"); XLSX.utils.book_append_sheet(wb, g, "How to fill");
+  saveWb(wb, `Articulation_Matrix_Template_${UI.scheme}_Scheme.xlsx`);
+};
 document.getElementById("btnTemplate").onclick = () => {
   const maxCo = Math.max(6, ...courses().map(c => c.cos.length));
   const rows = [["Course Code", "Course Name", "Sem", ...Array.from({ length: maxCo }, (_, i) => "CO" + (i + 1))]];
@@ -1327,7 +1575,20 @@ document.getElementById("makePdf").onclick = async () => {
   await saveFile(new Blob([doc.output("arraybuffer")]), `PO_Attainment_${UI.scheme}_Scheme${semTag}.pdf`);
 };
 
-// ---------- backup / restore (moves all schemes between computers)
+// ---------- sign-in wiring
+document.getElementById("repoName").textContent = `${GH.owner}/${GH.repo}`;
+document.getElementById("ownerName").textContent = GH.owner;
+document.getElementById("tokenLink").href = "https://github.com/settings/tokens/new?scopes=public_repo&description=" + encodeURIComponent("Course exit survey PO attainment (" + GH.repo + ")");
+document.getElementById("btnSign").onclick = () => { if (auth) signOut(); else { openPanel("signPanel"); document.getElementById("ghToken").focus(); } };
+document.getElementById("closeSign").onclick = () => document.getElementById("signPanel").hidden = true;
+document.getElementById("signForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const tok = document.getElementById("ghToken").value.trim();
+  if (!tok) { const er = document.getElementById("signErr"); er.textContent = "Paste your GitHub token first."; er.hidden = false; return; }
+  signIn(tok);
+});
+
+// ---------- backup / restore (a copy of all schemes as one file)
 document.getElementById("btnBackup").onclick = () => {
   const stamp = new Date().toISOString().slice(0, 10);
   saveFile(new Blob([JSON.stringify({ app: "nmit-po-attainment", version: 2, saved: new Date().toISOString(), data: DATA }, null, 1)], { type: "application/json" }),
@@ -1339,23 +1600,26 @@ document.getElementById("restoreFile").addEventListener("change", async e => {
   try {
     const txt = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsText(f); });
     const j = JSON.parse(txt);
-    if (!j || j.app !== "nmit-po-attainment" || !j.data) throw new Error("bad");
-    pendingRestore = j;
-    const n = SCHEMES.map(s => `${s}: ${(j.data[s] && j.data[s].courses || []).length} courses`).join(", ");
+    if (!j || j.app !== "nmit-po-attainment" || !(j.data || j.schemes)) throw new Error("bad");
+    pendingRestore = j.data || j.schemes;
+    const n = SCHEMES.map(s => `${s}: ${(pendingRestore[s] && pendingRestore[s].courses || []).length} courses`).join(", ");
     const box = document.getElementById("restoreBox");
-    box.querySelector("span").textContent = `Restore ${f.name} (${n})? This replaces all data in this browser.`;
+    box.querySelector("span").textContent = `Restore ${f.name} (${n})? This replaces the shared data for everyone.`;
     box.hidden = false; box.scrollIntoView({ block: "nearest" });
   } catch (err) { toast("That file isn't a backup from this page."); }
 });
 document.getElementById("restoreYes").onclick = () => {
-  if (!pendingRestore) return;
-  SCHEMES.forEach(s => DATA[s] = normalizeScheme(pendingRestore.data[s] || blank()));
+  if (!pendingRestore || readOnly) return;
+  SCHEMES.forEach(s => DATA[s] = normalizeScheme(pendingRestore[s] || blank()));
   pendingRestore = null; document.getElementById("restoreBox").hidden = true;
-  saveLocal(); renderAll(); toast("Data restored");
+  commit(); renderAll(); toast("Data restored");
 };
 document.getElementById("restoreNo").onclick = () => { pendingRestore = null; document.getElementById("restoreBox").hidden = true; };
 
+renderSign();
+setSync("loading");
 route();
+pull().then(pollLoop);
 </script>
 
 </body>
